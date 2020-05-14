@@ -1,13 +1,15 @@
 const g = [
-    [0, 4, 3, 7, 0, 0],
-    [4, 0, 0, 3, 2, 0],
-    [3, 0, 0, 0, 3, 0],
-    [7, 3, 0, 0, 0, 2],
-    [0, 2, 3, 0, 0, 2],
-    [0, 0, 0, 2, 2, 0]
+    [0, 0, 0, 0, 4, 0, 1, 0],
+    [0, 0, 0, 0, 2, 8, 0, 0],
+    [0, 0, 0, 0, 0, 0, 3, 9],
+    [0, 0, 0, 0, 0, 1, 0, 3],
+    [4, 2, 0, 0, 0, 7, 2, 2],
+    [0, 8, 0, 1, 7, 0, 0, 1],
+    [1, 0, 3, 0, 2, 0, 0, 4],
+    [0, 0, 9, 3, 2, 1, 4, 0]
   ];
-  let endPoint = 6;
-  startPoint = 0;
+  let endPoint = 4;
+  let startPoint = 7;
   
   function findShortestPath(g, startPoint, endPoint) {
     const weightMap = buildWeightMap(g, startPoint);
@@ -71,21 +73,22 @@ function visitedNode(g) {
     }
     document.querySelector('.data_lab1').innerHTML += html;
     document.querySelector('.path_lab1').innerHTML += weightsMap;
-    
+    document.querySelector('.start').innerHTML += startPoint;
+    document.querySelector('.end').innerHTML += endPoint;
 }
 
   function visitedPath() {
     for (i in shortestPath){
        shortestPath[i] += 1;
 }
-    shortestPath.push(endPoint);
+    //  shortestPath.push(endPoint);
 console.log("(Лаб 1) Кратчайший маршрут до конечной точки:", shortestPath);
 document.querySelector('.res_lab1').innerHTML += shortestPath;
 }
 
-const weightsMap = buildWeightMap(g, 0);
+const weightsMap = buildWeightMap(g, 6);
 console.log('(Лаб 1) Самые короткие пути от начальной точки:', weightsMap);
-const shortestPath = buildShortestPath(g, weightsMap, 5);
+const shortestPath = buildShortestPath(g, weightsMap, 3);
 
 visitedPath(endPoint);
 visitedNode(g);
